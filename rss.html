@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Automatic RSS Feeds</title>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #0a6d00; /* Dark green background color */
+        color: #fff; /* White text color */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .navbar {
+        background-color: #333; /* Dark gray background color */
+        color: #fff; /* White text color */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        width: 100%;
+      }
+
+      .navbar a {
+        color: #fff; /* White text color for navigation links */
+        text-decoration: none;
+        margin-right: 10px;
+      }
+
+      h1 {
+        font-weight: bold; /* Make the title bold */
+        margin-top: 30px;
+      }
+
+      .container {
+        width: 80%;
+        max-width: 800px;
+        margin-top: 20px;
+        background-color: #fff; /* White background color */
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      table {
+        width: 100%;
+      }
+
+      th {
+        text-align: left;
+      }
+
+      .category-title {
+        font-weight: bold; /* Make the category title bold */
+        margin: 10px 0; /* Add some margin below the category title */
+        color: #000; /* Black text color for the category title */
+      }
+
+      .article-title {
+        color: #0a6d00; /* Dark green color for the article title */
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .article-title:hover {
+        color: #076a00; /* Darker green color on hover */
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .footer {
+        background-color: #333; /* Dark gray background color */
+        color: #fff; /* White text color */
+        padding: 10px;
+        text-align: center;
+        margin-top: 20px; /* Add margin to the top of the footer */
+        width: 100%;
+      }
+
+      .footer a {
+        color: #fff; /* White text color for footer links */
+        text-decoration: none;
+      }
+
+      .project-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .project-container h2 {
+        font-weight: bold;
+      }
+
+      .project-image {
+        max-width: 200px;
+        height: auto;
+      }
+      
+      .left-image,
+    .right-image {
+      position: absolute;
+      top: 20px; /* Adjust the vertical position as needed */
+      width: 100px; /* Adjust the width of the images */
+      height: auto; /* Maintain aspect ratio */
+    }
+
+    .left-image {
+      left: 20px; /* Adjust the horizontal position as needed */
+    }
+
+    .right-image {
+      right: 20px; /* Adjust the horizontal position as needed */
+    }
+  </style>
+
+
+    </style>
+  </head>
+
+</head>
+
+</body>
+
+
+  <body>
+    <h1 class="project-title">Présentation du projet EVEille</h1>
+    <div class="project-description">
+      <p>
+        Le projet EVEille (Exploration et Valorisation Electroniques des corpus En SHS) a pour objectif premier d’accompagner les jeunes chercheur.e.s ou les chercheur.e.s confirmé.e.s qui souhaitent s’initier aux Humanités au sein de pratiques de recherche nouvelles ou engagées de longue date.
+      </p>
+      <p>
+        Il entend développer progressivement une réflexion collective critique sur les enjeux épistémologiques du virage du “tout-numérique” à l’heure actuelle, dans le monde académique notamment, afin de faire de l’outillage un réel lieu de réflexion sur les pratiques de la recherche, les visées et les orientations implicites introduites par le recours au traitement numérique des corpus.
+      </p>
+    </div>
+    <div class="container">
+      <h1>Les flux RSS du projet EVEille</h1>
+
+      <div class="image-container">
+        <img src="https://i.ibb.co/x2XCjyW/Capture-d-cran-2023-06-06-140520.png" alt="Image">
+      </div>
+
+      <table>
+        <tr>
+          <th>Catégorie</th>
+          <th>Articles</th>
+        </tr>
+        <tr>
+          <td class="category-title">Jardin de la poésie</td>
+          <td id="rssArticles1"></td>
+        </tr>
+        <tr>
+          <td class="category-title">La roue à livres</td>
+          <td id="rssArticles2"></td>
+        </tr>
+        <tr>
+          <td class="category-title">Olio</td>
+          <td id="rssArticles3"></td>
+        </tr>
+        <tr>
+          <td class="category-title">Estrades</td>
+          <td id="rssArticles4"></td>
+        </tr>
+      </table>
+      
+      <div class="footer">
+        <b>Autres projets</b>
+        <div class="project-description">
+          <div class="project-container">
+            <div class="project">
+              <h2>Projet Digit_Hum</h2>
+              <a href="https://digithum.huma-num.fr/" target="_blank">
+                <img class="project-image" src="https://i.ibb.co/VS4Qprj/Capture-d-cran-2023-06-06-213348.png" alt="Projet Digit_Hum">
+              </a>
+            </div>
+            <div class="project">
+              <h2>Projet Curvenote</h2>
+              <a href="https://popineaumaxime-les.curve.space/myst/presentation" target="_blank">
+                <img class="project-image" src="https://i.ibb.co/G3YsMsH/Capture-d-cran-2023-06-06-213528.png" alt="Projet Curvenote">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer">
+      <a href="https://i.ibb.co/XprzQTH/images.jpg">Mentions légales</a> | © Projet EVEille
+    </div>
+
+    <script>
+      function generateRSS() {
+        const feedData = [
+          {
+            category: 'Jardin de la poésie',
+            url: 'https://versunjardin.hypotheses.org'
+          },
+          {
+            category: 'La roue à livres',
+            url: 'https://rouealivres.hypotheses.org'
+          },
+          {
+            category: 'Olio',
+            url: 'https://olio.hypotheses.org'
+          },
+          {
+            category: 'Estrades',
+            url: 'https://estrades.hypotheses.org'
+          }
+        ];
+
+        const rssArticles1 = document.getElementById('rssArticles1');
+        const rssArticles2 = document.getElementById('rssArticles2');
+        const rssArticles3 = document.getElementById('rssArticles3');
+        const rssArticles4 = document.getElementById('rssArticles4');
+
+        const fetchAndProcess = (category, url, articlesContainer) => {
+          $.get(url + '/feed', (data) => {
+            const items = $(data).find('item').slice(0, 3);
+
+            if (items.length > 0) {
+              const rssItems = items.map((index, item) => {
+                const itemTitle = $(item).find('title').text();
+                const itemLink = $(item).find('link').text();
+                return `
+                  <li>
+                    <a href="${itemLink}" class="article-title">${itemTitle}</a>
+                  </li>
+                `;
+              }).get().join('');
+
+              articlesContainer.innerHTML = `<ul>${rssItems}</ul>`;
+            } else {
+              articlesContainer.innerHTML = 'Aucun article trouvé.';
+            }
+          }).fail(() => {
+            articlesContainer.innerHTML = 'Erreur lors du chargement du flux RSS.';
+          });
+        };
+
+        feedData.forEach((feed) => {
+          switch (feed.category) {
+            case 'Jardin de la poésie':
+              fetchAndProcess(feed.category, feed.url, rssArticles1);
+              break;
+            case 'La roue à livres':
+              fetchAndProcess(feed.category, feed.url, rssArticles2);
+              break;
+            case 'Olio':
+              fetchAndProcess(feed.category, feed.url, rssArticles3);
+              break;
+            case 'Estrades':
+              fetchAndProcess(feed.category, feed.url, rssArticles4);
+              break;
+          }
+        });
+      }
+
+      generateRSS();
+    </script>
+  </body>
+</html>
