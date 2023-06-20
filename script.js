@@ -39,3 +39,44 @@ fetch('rss.xml')
   .catch(error => {
     console.error('Error fetching RSS feed:', error);
   });
+
+  function search() {
+    var searchTerm = document.getElementById("searchInput").value;
+    var searchResultsContainer = document.getElementById("searchResults");
+    searchResultsContainer.innerHTML = "";
+
+    // Flux RSS à rechercher
+    var rssFeeds = [
+        "https://versunjardin.hypotheses.org",
+        "https://rouealivres.hypotheses.org",
+        "https://olio.hypotheses.org",
+        "https://estrades.hypotheses.org"
+    ];
+
+    // Parcourir les flux RSS
+    rssFeeds.forEach(function(feedUrl) {
+        fetch(feedUrl)
+            .then(response => response.text())
+            .then(data => {
+                var parser = new DOMParser();
+                var xmlDoc = parser.parseFromString(data, "text/xml");
+                var items = xmlDoc.getElementsByTagName("item");
+
+                // Parcourir les éléments des flux RSS
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    var title = item.getElementsByTagName("title")[0].textContent;
+                    var description = item.getElementsByTagName("description")[0].textContent;
+
+                    // Vérifier si le terme de recherche est présent dans le titre ou la description
+                    if (title.toLowerCase().includes(searchTerm.toLowerCase()) || description.toLowerCase().includes(searchTerm.toLowerCase())) {
+                        var resultItem = document.createElement("div");
+                        resultItem.innerHTML = "<h3>" + title + "</h3><p>" + description + "</p>";
+                        searchResultsContainer.appendChild(resultItem);
+                    }
+                }
+            })
+            .catch(error => console.log("Erreur : " + error));
+    });
+}
+
